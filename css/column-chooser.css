@@ -1,0 +1,235 @@
+/*
+/////////////////////////////////////////////////////////////////////
+///   Column chooser - default is for viewport 320px wide         ///
+///                                                               ///
+///   Queries: nicholas.bergquist@informa.com                     ///
+/////////////////////////////////////////////////////////////////////
+*/
+
+/*******************************************************************/
+/*  Default 320px media width                                      */
+/*******************************************************************/
+
+/* Generic elements */
+html {
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; /* not inherited by default */
+}
+*, *:before, *:after {
+	-webkit-box-sizing: inherit; -moz-box-sizing: inherit; box-sizing: inherit; /* apply desired box model to all but allowing local change */
+}
+body {
+    background: url(../images/background.png);
+    background-size: cover;
+    color: #fff;
+    /* set base font size in % so that in IE the 'View > Text size' menu (useable with 'em' units) does not have  
+       large incremental step changes with 'em' units alone.
+	   
+       12px (desired base font size). 18px (1.5 x base font size) is desired base line-height.
+       (12px (desired base size) / 16px (def. browser size)) x 100 = 75%  */
+    font: 75%/1.5 Open Sans, Arial, Helvetica, sans-serif;	
+    min-width: 320px; /* fix the minimum width */
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #fff;
+}
+h1 {
+	font-size: 2.33em; /* 28px needed, 28 / 12 = 2.33 */
+    font-weight: 300;
+    line-height: 0.643em; /* standardised leading, 18 / 28 = 0.643 */
+    margin-bottom: 0.322em; /* 0.643 x 0.5 = 0.322 */
+    margin-top: 0.964em; /* 0.643 x 1.5 = 0.964 */ 
+}
+h2 {
+	font-size: 1.5em; /* 18px required, 18 / 12 = 1.5 */
+    line-height: 1em; /* standardised leading, 18 / 18 = 1 */
+    margin-bottom: 0.5em; /* 1 x 0.5 = 0.5 */
+    margin-top: 1.5em; /* 1 x 1.5 = 1.5 */ 
+}
+h3 {
+	font-size: 1.167em; /* 14px needed, 14 / 12 = 1.167 */
+	line-height: 1.286em; /* standardised leading, 18 / 14 = 1.286 */
+	margin-bottom: 0.643em; /* 1.286 x 0.5 = 0.643 */
+    margin-top: 1.929em; /* 1.286 x 1.5 = 1.929 */
+}
+h4 {
+    font-size: 1em; /* 12px needed, 12 / 12 = 1 */
+	line-height: 1.5em; /* standardised leading, 18 / 12 = 1.5 */
+	margin-bottom: 0.75em; /* 1.5 x 0.5 = 0.75 */
+	margin-top: 2.25em; /* 1.5 x 1.5 = 2.25 */
+}
+h5 {
+	font-size: 1em; /* 12px needed, 12 / 12 = 1 */
+	line-height: 1.5em; /* standardised leading, 18 / 12 = 1.5 */
+	margin-bottom: 0.75em; /* 1.5 x 0.5 = 0.75 */
+	margin-top: 2.25em; /* 1.5 x 1.5 = 2.25 */
+}
+h6 {
+	font: 1em helvetica, arial, sans-serif; /* 12px needed, 12 / 12 = 1 */
+	line-height: 1.5em; /* standardised leading, 18 / 12 = 1.5 */
+	margin-bottom: 0.75em; /* 1.5 x 0.5 = 0.75 */
+	margin-top: 2.25em; /* 1.5 x 1.5 = 2.25 */
+}
+main {
+    padding: 0 0.833%; /* 10px either side at full width: 10/1200 x 100 = 0.833 */
+}
+p, li, main {
+	margin-bottom: 0.75em; /* 1.5 x 0.5 = 0.75, where 1.5 = def. body line-height & 0.5 = proportion allocated for bottom margins */ 
+}
+
+/* class elements: =. */
+.column-chooser {
+    background: #eee;
+    -moz-box-shadow: 8px 8px 10px -5px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 8px 8px 10px -5px rgba(0, 0, 0, 0.5); box-shadow: 8px 8px 10px -5px rgba(0, 0, 0, 0.5);
+    color: #000;
+    max-width: 650px;
+    overflow: hidden;
+    padding: 0.75em 1em 1.5em;
+}
+.column-chooser h4, .column-chooser h5 {
+    color: #000;
+    margin-top: 0;
+}
+.column-chooser h4 {
+    font-size: 1.5em; /* 18px required, 18 / 12 = 1.5 */;
+}
+.column-chooser h5 {
+    margin-bottom: 0.25em;
+}
+.column-chooser :link, .column-chooser :visited, .column-chooser :link:hover, .column-chooser :visited:hover {
+	color: #0000ff; 
+    text-decoration: underline;
+}
+.column-chooser .anchor-submit:link, .column-chooser .anchor-submit:visited {
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 3px 15px 3px;
+    text-decoration: none;
+}
+.column-chooser .anchor-submit:link:hover, .anchor-submit .column-chooser:visited:hover {
+    text-decoration: underline
+}
+.list-column-chooser {
+    clear: both;
+    -webkit-columns: 4 150px; -moz-columns: 4 147px; columns: 4 145px;
+    -webkit-column-gap: 0.5em; -moz-column-gap: 0.5em; column-gap: 0.5em;
+}
+.list-column-chooser li {
+    -webkit-column-break-inside: avoid; page-break-inside: avoid; break-inside: avoid;
+    margin-bottom: 0.25em;
+}
+.list-column-chooser input[type='checkbox'] {
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+}
+.list-column-chooser label {
+    font-size: 95%
+}
+.list-column-chooser ul {
+    margin: 0 0 1em 3px;
+}
+.menu-column-chooser {
+    font-size: 0.80em
+}
+.menu-column-chooser a {
+    padding: 10px 12px 5px;
+}
+.menu-column-chooser li {
+    margin: 0 10px 1.75em 0;
+}
+.menu-general a {
+    display: block;
+    height: 100%
+}
+.menu-general li {
+    width: auto;
+}
+.menu-horiz li {
+	float: left;
+}
+.anchor-submit {
+    background-color: #09b8f9;
+    border: 1px solid #50788c;
+    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;
+}
+
+/* id elements: =# */
+
+
+/*******************************************************************/
+/*   Media between 480 and 767                                     */
+/*******************************************************************/
+@media only screen and (min-width: 480px) {
+	/*body:before { content: "Media between 480 and 767"; }*/
+	
+	
+	/* class elements: =. */
+	.column-chooser h4 {
+        float: left;
+        width: auto;
+    }
+    .menu-column-chooser {
+        float: right;
+        width: auto;
+    }
+	
+	/* id elements: =# */
+	
+
+}
+
+/*******************************************************************/
+/*   Media between 768 and 899                                     */
+/*******************************************************************/
+@media only screen and (min-width: 768px) { 
+	/*body:before { content: "Media between 768 and 899"; }*/
+	
+	
+	/* class elements: =. */
+	
+	
+    
+	/* id elements: =# */
+	
+	
+}
+
+/*******************************************************************/
+/*   Media between 900 and 1023                                    */
+/*******************************************************************/
+@media only screen and (min-width: 900px) { 
+	/*body:before { content: "Media between 900 and 1023"; }*/
+	
+
+	/* class elements: =. */
+	
+	
+	
+	/* id elements: =# */
+	
+	
+}
+
+/*******************************************************************/
+/*   Media between 1024 and 1199                                   */
+/*******************************************************************/
+@media only screen and (min-width: 1024px) { 
+	/*body:before { content: "Media between 1024 and 1199"; }*/
+    
+    
+    /* class elements: =. */
+    
+    
+	/* id elements: =# */
+	
+}
+
+/*******************************************************************/
+/*   Media over 1200                                               */
+/*******************************************************************/
+@media only screen and (min-width: 1200px) { 
+	/*body:before { content: "Media at least 1200"; }*/
+
+    
+}
